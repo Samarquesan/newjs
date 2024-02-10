@@ -1,2 +1,2 @@
 # newjs
- novo curso
+-[Exercício01](./aula00010.html)
