@@ -19,12 +19,12 @@ f_tipoMilitar.addEventListener("click", (evt)=>{
     f_portas = 0
     f_blindagem.value = 0
     f_municao.value = 0
-    f_blindagem.removeAttribute("disabled")
-    f_municao.removeAttribute("disabled")
+    f_blindagem.removeAttribute("disabled", "disabled")
+    f_municao.removeAttribute("disabled", "disabled")
 })
 f_tipoNormal.addEventListener("click", (evt)=>{
     f_nome.value = ""
-    f_portas = 0
+    f_portas.value = 0
     f_blindagem.value = 0
     f_municao.value = 0
     f_blindagem.setAttribute("disabled")
@@ -44,7 +44,7 @@ const gerenciarExibicaoCarros = ()=>{
         })
         btn.innerHTML = "Remover"
         div.setAttribute("class", c.nome)
-        div.setAttribute("data-nome", "carro")
+        div.setAttribute("data-nome", c.nome)
         div.innerHTML = `Nome: ${c.nome} </br>`
         div.innerHTML += `Portas: ${c.portas}</br>`
         div.innerHTML += `Cor: ${c.cor}</br>`
