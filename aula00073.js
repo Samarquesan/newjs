@@ -7,6 +7,8 @@ const tlimpar = document.getElementById("tlimpar")
 const tigual = document.getElementById("tigual")
 const tcpy = document.getElementById("tcpy")
 const teste = document.getElementById("teste")
+const calc_aba =  document.getElementById("calc_aba")
+const calc = document.getElementById("calc")
 
 let sinal = false
 let decimal = false
@@ -74,4 +76,8 @@ tcpy.addEventListener("click",(evt)=>{
     // teste.select()
     // teste.setSelectionRange(0,99999)// mobile
     // navigator.clipboard.writeText(teste.value)
+})
+
+calc_aba.addEventListener("click",(evt)=>{
+    calc.classList.toggle("calc_exibir")
 })
