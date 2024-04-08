@@ -4,7 +4,30 @@
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
-
+h1{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    background-color: rgba(47, 83, 110, 0.655);
+    color: #FFF;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    padding: 10px;
+    border-radius: 10px;
+}
+.div_data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    background-color: rgb(47, 104, 110);
+    color: #FFF;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    padding: 10px;
+    border-radius: 10px;
+}
 .div_relogio{
     display: flex;
     justify-content: center;
