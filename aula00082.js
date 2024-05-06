@@ -12,9 +12,9 @@ let numBola = 0;
 class Bola {
     constructor(arrayBolas, palco){
         this.tamanho = Math.floor(Math.random()*16)+10;
-        this.red4rbg = Math.floor(Math.random()*255);
-        this.blue4rbg = Math.floor(Math.random()*255);
-        this.green4rbg = Math.floor(Math.random()*255);
+        this.red4rgb = Math.floor(Math.random()*255);
+        this.green4rgb = Math.floor(Math.random()*255);
+        this.blue4rgb = Math.floor(Math.random()*255);
         this.positionX = Math.floor(Math.random()*(larguraPalco - this.tamanho));
         this.positionY = Math.floor(Math.random()*(alturaPalco - this.tamanho));
         this.velX = Math.floor(Math.random()*2)+0.5;
@@ -27,15 +27,28 @@ class Bola {
         this.desenhar();
         this.controle = setInterval(this.controlar, 10);
         this.eu = document.getElementById(this.id);
+        numBola++;
+        num_objetos.innerHTML = numBola
     }
-    poscaoArray=()=>{
-
+    posicaoArray=()=>{
+        return this.arrayBolas.indexOf(this);
     }
     remover=()=>{
-
-    }
+        clearInterval(this.controle);
+        bolas = bolas.filter((b)=>{
+            if(b.id != this.id){
+                return b;
+            };
+        });
+        this.eu.remove();
+        num_objetos.innerHTML = numBola;
+    };
     desenhar=()=>{
-
+        const div = document.createElement("div");
+        div.setAttribute("id", this.id);
+        div.setAttribute("class", "bola");
+        div,setAttribute("style", `left:${this.positionX}; top:${this.positionY}; width:${this.tamanho}; height:${this.tamanho}; background-color:rgb(${this.red4rgb}, ${this.green4rgb}, ${this.blue4rgb})`);
+        this.palco.appendChild(div);
     }
     controlar=()=>{
 
@@ -45,7 +58,7 @@ class Bola {
 window.addEventListener("resize", (evt)=>{
     larguraPalco = palco.offsetWidth;
     alturaPalco = palco.offsetHeight;
-    console.log(larguraPalco);
+    
 });
 
 btn_add.addEventListener("click", (evt)=>{
