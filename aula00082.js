@@ -47,13 +47,32 @@ class Bola {
         const div = document.createElement("div");
         div.setAttribute("id", this.id);
         div.setAttribute("class", "bola");
-        div,setAttribute("style", `left:${this.positionX}; top:${this.positionY}; width:${this.tamanho}; height:${this.tamanho}; background-color:rgb(${this.red4rgb}, ${this.green4rgb}, ${this.blue4rgb})`);
+        div.setAttribute("style", `left:${this.positionX}px; top:${this.positionY}px; width:${this.tamanho}px; height:${this.tamanho}px; background-color:rgb(${this.red4rgb}, ${this.green4rgb}, ${this.blue4rgb})`);
         this.palco.appendChild(div);
     }
-    controlar=()=>{
 
+    controle_bordas= () =>{
+        if(this.positionX + this.tamanho >= larguraPalco){
+            this.direcaoX = -1;
+        }else if(this.positionX <= 0){
+            this.direcaoX = 1;
+        }
+        if(this.positionY + this.tamanho >= alturaPalco){
+            this.direcaoY = -1;
+        }else if(this.positionY <= 0){
+            this.direcaoY = 1;
+        }
     }
-}
+    controlar=()=>{
+        this.controle_bordas();
+        this.positionX += this.direcaoX * this.velX;
+        this.positionY += this.direcaoY * this.velY;
+        this.eu.setAttribute("style", `left:${this.positionX}px; top:${this.positionY}px; width:${this.tamanho}px; height:${this.tamanho}px; background-color:rgb(${this.red4rgb}, ${this.green4rgb}, ${this.blue4rgb})`);
+        if((this.positionX > larguraPalco) || (this.positionY > alturaPalco)){
+            this.remover();
+        };
+    };
+};
 
 window.addEventListener("resize", (evt)=>{
     larguraPalco = palco.offsetWidth;
@@ -62,14 +81,14 @@ window.addEventListener("resize", (evt)=>{
 });
 
 btn_add.addEventListener("click", (evt)=>{
-    const qtde = qtde.value;
+    const qtde = txt_qtde.value;
     for(let i = 0; i < qtde; i++){
-        //Inastanciar novas bolinhas
+        bolas.push(new Bola(bolas, palco));
     }
 });
 
 btn_remover.addEventListener("click", (evt)=>{
     bolas.map((elemento)=>{
-        //Remover bolinha
+        elemento.remover()
     })
 });
