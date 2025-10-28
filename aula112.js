@@ -5,7 +5,12 @@ const posy = document.getElementById("posy");
 const largura = document.getElementById("largura");
 const altura = document.getElementById("altura");
 
-let DOMRect_q1 = q1.getBoundingClientRect()
+q1.accessKey= "b"
+q2.accessKey="n"
+
+console.log("q1: " + q1.accessKey)
+console.log("q2: " +q2.accessKey)
+//let DOMRect_q1 = q1.getBoundingClientRect()
 
 const info=(el)=>{
     let DOMRect_q = el.getBoundingClientRect()
